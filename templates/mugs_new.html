@@ -2,40 +2,6 @@
 
 {% block content %}
 <form method='POST' action='/mugs'>
-    <fieldset>
-    <legend>New Mug</legend>
-    <!-- Mug Name -->
-    <p>
-        <label for='mug_name'>Mug Name</label><br>
-        <input id="mug_name" type='text' name='mug_name' />
-    </p>
-
-    <!-- Description -->
-    <p>
-        <label for='description'>Description</label><br>
-        <input id ="description" type='text' name='de' />
-    </p>
-
-    <!-- Price -->
-    <p>
-        <label for='price'>Price</label><br>
-        <input id="price" type='number' name='price' />
-    </p>
-
-    <!-- color -->
-    <p>
-        <label for='color'>Color</label><br>
-        <input  type='radio' name='color' value= "greem"/> Green
-        <input  type='radio' name='color' value= "purple"/> Purple
-        <input  type='radio' name='color' value= "black"/> Black
-    </p>
-
-    
-    </fieldset>
-
-    <!-- BUTTON -->
-    <p>
-        <button type='submit'>Save Mug</button>
-    </p>
+    {% include "partials/mugs_form.html" %}
 </form>
 {% endblock %}

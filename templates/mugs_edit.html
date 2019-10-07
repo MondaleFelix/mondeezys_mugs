@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method='POST' action='/mugs/{{mug._id}}'>
+	{% include "partials/mugs_form.html" %}
+</form>
+{% endblock %}
