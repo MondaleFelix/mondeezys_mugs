@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
+from bson.objectid import ObjectId
 
 client = MongoClient()
 db = client.MugShop
@@ -24,10 +25,14 @@ def playlists_submit():
 		"color": request.form.get("color")
 
 	}
-	print(mug)
-	mugs.insert_one(mug)
-	return redirect(url_for("mugs_index"))
+	mug_id = mugs.insert_one(mug).inserted_id
+	return redirect(url_for("mugs_show", mug_id = mug_id))
 
+
+@app.route("/mugs/<mug_id>")
+def mugs_show(mug_id):
+	mug = mugs.find_one({'_id' : ObjectId(mug_id)})
+	return render_template("mugs_show.html", mug = mug)
 
 @app.route("/mugs/new")
 def mugs_new():

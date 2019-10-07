@@ -6,7 +6,7 @@
     <a href="/mugs/new">Add a Mug</a>
 
     {% for mug in mugs %}
-        <h2>{{ mug.mug_name }}</h2>
+        <h2><a href="/mugs/{{mug._id}}">{{ mug.mug_name }}</a></h2>
         <small>${{ mug.price }}</small>
     {% endfor %}
 {% endblock %}
