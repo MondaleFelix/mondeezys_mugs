@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Mondeezy's Mugs</h1>
+    {% for mug in mugs %}
+        <h2>{{ mug.product_name }}</h2>
+        <small>{{ mug.price }}</small>
+    {% endfor %}
+{% endblock %}
