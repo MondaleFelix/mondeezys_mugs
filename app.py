@@ -1,15 +1,19 @@
 from flask import Flask, render_template
+from pymongo import MongoClient
+
+client = MongoClient()
+db = client.MugShop
+mugs = db.mugs
+
 
 app = Flask(__name__)
 
-mugs = [
-	{ "product_name" : "Mondale's Mug", 'price' : 2}
-]
+
 
 @app.route("/")
 def mugs_index():
 	# Shows all mugs
-	return render_template("mugs_index.html", mugs=mugs)
+	return render_template("mugs_index.html", mugs=mugs.find())
 
 
 
