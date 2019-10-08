@@ -10,7 +10,10 @@
 <h2>{{ mug.description }}</h2>
 <h2>${{ mug.price}}</h2>
 
-<p><a href="/mugs/{{ mug._id }}/edit">Edit this mug</a></p>
+<p><a href="/mugs/{{ mug._id }}/edit">Edit</a></p>
+<p><form method="POST" action="/mugs/{{mug._id}}/delete">
+	<button type="submit">Delete</button>
+</form></p>
 
 {% endblock %}
 

@@ -1,13 +1,18 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify, make_response
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 
 client = MongoClient()
 db = client.MugShop
 mugs = db.mugs
-
+# users = db.users
 
 app = Flask(__name__)
+
+# @app.route("/login")
+# def login:
+# 	auth = request.authorization
+# 	return ""
 
 
 
@@ -54,6 +59,13 @@ def mugs_update(mug_id):
 
 	mugs.update_one( {"_id" : ObjectId(mug_id)}, {"$set" : updated_mug})
 	return redirect(url_for("mugs_show", mug_id = mug_id))
+
+
+@app.route("/mugs/<mug_id>/delete", methods=["POST"])
+def mugs_delete(mug_id):
+	mugs.delete_one({"_id" : ObjectId(mug_id)})
+	return redirect(url_for("mugs_index"))
+
 
 if __name__ == "__main__":
 	app.run(debug=True)
