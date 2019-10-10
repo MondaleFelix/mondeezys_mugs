@@ -3,7 +3,7 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 import os
 
-host = os.environ.get('MONGODB_URI', 'mongodb://@ds333248.mlab.com:33248/heroku_tmqmf5bk')
+host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Mondale')
 client = MongoClient(host=host)
 db = client.get_default_database()
 mugs = db.mugs
@@ -33,6 +33,7 @@ def playlists_submit():
 
 	}
 	mug_id = mugs.insert_one(mug).inserted_id
+	print(mug_id)
 	return redirect(url_for("mugs_show", mug_id = mug_id))
 
 
