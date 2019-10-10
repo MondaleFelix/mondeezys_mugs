@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify, make_response
 from pymongo import MongoClient
 from bson.objectid import ObjectId
+import os
 
-client = MongoClient()
-db = client.MugShop
+host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/mondeezys_mugs')
+client = MongoClient(host=host)
+db = client.get_default_database()
 mugs = db.mugs
 # users = db.users
 
@@ -68,4 +70,4 @@ def mugs_delete(mug_id):
 
 
 if __name__ == "__main__":
-	app.run(debug=True)
+	app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
