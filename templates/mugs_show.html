@@ -4,16 +4,31 @@
 
 <a href='/'>Back to Home</a>
 
+<div class="row">
+	<div class="col-sm-6 col-sm-offset-3">
 
-<h1>{{ mug.mug_name }}</h1>
-<h2>{{ mug.color}}</h2>
-<h2>{{ mug.description }}</h2>
-<h2>${{ mug.price}}</h2>
+		<!-- Mug Name -->
+		<h1>{{ mug.mug_name }}</h1>
 
-<p><a href="/mugs/{{ mug._id }}/edit">Edit</a></p>
-<p><form method="POST" action="/mugs/{{mug._id}}/delete">
-	<button type="submit">Delete</button>
-</form></p>
+		<!-- Mug Picture -->
+		<div class="card"><div class="card-body">
+			<img width="300"  height="300" src="/static/{{mug.color}}.png">
+		</div></div>
 
+		<!-- Description of the mug -->
+		<h2>{{ mug.description }}</h2>
+
+		<!-- Mug Price -->
+		<h2>${{ mug.price}}</h2>
+
+
+		<p><a href="/mugs/{{ mug._id }}/edit"><button  class="btn btn-primary">Edit</button></a></p>
+		<p><form method="POST" action="/mugs/{{mug._id}}/delete">
+			<input type='hidden' name='_method' value='DELETE'>
+
+			<button class="btn btn-primary" type="submit">Delete</button>
+		</form></p>
+	</div>
+</div>
 {% endblock %}
 

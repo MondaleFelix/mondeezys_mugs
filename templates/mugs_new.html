@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method='POST' action='/mugs'>
-    {% include "partials/mugs_form.html" %}
-</form>
+<div class='row'>
+    <div class='col-sm-6 col-sm-offset-3'>
+		<form method='POST' action='/mugs'>
+		    {% include "partials/mugs_form.html" %}
+		</form>
+	</div>
+</div>
 {% endblock %}

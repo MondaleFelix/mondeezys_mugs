@@ -1,14 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Mondeezy's Mugs</h1>
+    <!-- <h1>Mondeezy's Mugs</h1> -->
 
-    <a href="/mugs/new">Add a Mug</a>
-
+    <!-- <a href="/mugs/new">Add a Mug</a> -->
+<div class="row">
     {% for mug in mugs %}
-        <h2><a href="/mugs/{{mug._id}}">{{ mug.mug_name }}</a></h2> 
-        <img width="240" height="240" src="/static/{{mug.color}}.png">
-        <small>${{ mug.price }}</small>
+		<div class="col-md-3">
+	        <h2><a href="/mugs/{{mug._id}}">{{ mug.mug_name }}</a></h2> 
+	        <img width="240" height="240" src="/static/{{mug.color}}.png">
+	        <small>${{ mug.price }}</small>
+	    </div>
     {% endfor %}
+</div>
 {% endblock %}
 
