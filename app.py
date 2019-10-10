@@ -3,8 +3,8 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 import os
 
-host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Mondale')
-client = MongoClient(host=host)
+host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Mugster')
+client = MongoClient(host=f"{host}?retryWrites=false")
 db = client.get_default_database()
 mugs = db.mugs
 # users = db.users
