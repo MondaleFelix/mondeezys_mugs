@@ -3,7 +3,7 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 import os
 
-host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Mondale')
+host = os.environ.get('MONGODB_URI', 'mongodb://@ds333248.mlab.com:33248/heroku_tmqmf5bk')
 client = MongoClient(host=host)
 db = client.get_default_database()
 mugs = db.mugs
